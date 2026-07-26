@@ -2,6 +2,12 @@ import streamlit as st
 import time
 from agents import build_reader_agent, build_search_agent, writer_chain, critic_chain
 import os
+import hashlib
+
+
+key = os.environ["MISTRAL_API_KEY"]
+
+st.write("SHA256:", hashlib.sha256(key.encode()).hexdigest())
 
 st.write("MISTRAL_API_KEY exists:", os.getenv("MISTRAL_API_KEY") is not None)
 st.write("Key length:", len(os.getenv("MISTRAL_API_KEY", "")))
